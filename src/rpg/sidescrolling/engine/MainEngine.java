@@ -1,5 +1,7 @@
 package rpg.sidescrolling.engine;
 
+import static javax.media.opengl.GL.GL_COLOR_BUFFER_BIT;
+import static javax.media.opengl.GL.GL_DEPTH_BUFFER_BIT;
 import static javax.media.opengl.fixedfunc.GLLightingFunc.GL_SMOOTH;
 import static javax.media.opengl.fixedfunc.GLMatrixFunc.GL_MODELVIEW;
 import static javax.media.opengl.fixedfunc.GLMatrixFunc.GL_PROJECTION;
@@ -36,15 +38,18 @@ public class MainEngine extends GLCanvas implements GLEventListener {
 	}
 
 	@Override
-	public void display(GLAutoDrawable arg0) {
-		// TODO Auto-generated method stub
+	public void display(GLAutoDrawable drawable) {
+		GL2 gl = drawable.getGL().getGL2();
+		gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
+		gl.glLoadIdentity();
+		update();
+		draw();
 	}
 
 	@Override
-	public void dispose(GLAutoDrawable arg0) {
-		// TODO Auto-generated method stub
-		
+	public void dispose(GLAutoDrawable drawable) {
+		// dunno what to do here
 	}
 
 	@Override
